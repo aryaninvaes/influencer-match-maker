@@ -10,7 +10,7 @@ const CallToAction = () => {
           Ready to revolutionize your influencer marketing?
         </h2>
         
-        <p className="text-xl opacity-90 mb-10 max-w-2xl mx-auto">
+        <p className="text-xl text-white mb-10 max-w-2xl mx-auto">
           Join thousands of brands and creators already collaborating through our platform. 
           Discover the perfect match for your next campaign and start seeing results today.
         </p>
@@ -23,7 +23,7 @@ const CallToAction = () => {
           <ArrowRight className="ml-2 h-5 w-5" />
         </Button>
         
-        <p className="text-sm opacity-80 mt-6">
+        <p className="text-sm text-white mt-6">
           No credit card required. Free plan available.
         </p>
       </div>
