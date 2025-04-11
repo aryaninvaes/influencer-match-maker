@@ -64,11 +64,11 @@ export default {
 					ring: 'hsl(var(--sidebar-ring))'
 				},
 				brand: {
-					blue: "#4361EE",
-					purple: "#7209B7",
-					pink: "#F72585",
-					darkblue: "#3A0CA3",
-					lightblue: "#4CC9F0"
+					teal: "#0A8270",
+					charcoal: "#403E43",
+					coral: "#F06449",
+					navy: "#2C3E50",
+					mint: "#66B2B2"
 				}
 			},
 			borderRadius: {
@@ -96,15 +96,25 @@ export default {
 				'float': {
 					'0%, 100%': { transform: 'translateY(0)' },
 					'50%': { transform: 'translateY(-10px)' }
+				},
+				'pulse': {
+					'0%, 100%': { opacity: '1' },
+					'50%': { opacity: '0.7' }
+				},
+				'scale': {
+					'0%': { transform: 'scale(1)' },
+					'100%': { transform: 'scale(1.05)' }
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out',
-				'float': 'float 6s ease-in-out infinite'
+				'float': 'float 6s ease-in-out infinite',
+				'pulse': 'pulse 3s ease-in-out infinite',
+				'scale': 'scale 0.3s ease-out'
 			},
 			backgroundImage: {
-				'hero-pattern': 'linear-gradient(135deg, rgba(67, 97, 238, 0.1) 0%, rgba(114, 9, 183, 0.1) 100%)',
+				'hero-pattern': 'linear-gradient(135deg, rgba(10, 130, 112, 0.1) 0%, rgba(44, 62, 80, 0.1) 100%)',
 			}
 		}
 	},
