@@ -7,7 +7,7 @@ const CallToAction = () => {
   const navigate = useNavigate();
   
   return (
-    <section className="py-16 lg:py-24 bg-gradient-to-r from-brand-teal to-brand-navy text-white">
+    <section className="py-16 lg:py-24 bg-gradient-to-r from-brand-blue to-brand-navy text-white">
       <div className="container px-4 sm:px-6 lg:px-8 mx-auto text-center max-w-4xl">
         <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6">
           Ready to revolutionize your influencer marketing?
@@ -19,7 +19,7 @@ const CallToAction = () => {
         </p>
         
         <Button 
-          className="bg-white text-brand-teal hover:bg-gray-100 text-lg px-8 py-6 animate-pulse hover:animate-none"
+          className="bg-white text-brand-blue hover:bg-gray-100 text-lg px-8 py-6 animate-pulse hover:animate-none"
           onClick={() => navigate('/business-dashboard')}
         >
           JOIN NOW

@@ -1,7 +1,7 @@
 
 import { useState } from 'react';
 import { Button } from "@/components/ui/button";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 
 interface NavbarProps {
@@ -10,13 +10,16 @@ interface NavbarProps {
 
 const Navbar = ({ scrolled }: NavbarProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const navigate = useNavigate();
 
   return (
-    <header className="fixed w-full bg-white/90 backdrop-blur-sm z-50 shadow-sm">
+    <header className={`fixed w-full z-50 transition-all duration-300 ${
+      scrolled ? "bg-white/95 backdrop-blur-sm shadow-sm" : "bg-transparent"
+    }`}>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex-shrink-0 flex items-center">
-            <h1 className="text-xl font-bold bg-gradient-to-r from-brand-blue to-brand-purple bg-clip-text text-transparent">
+            <h1 className="text-xl font-bold bg-gradient-to-r from-brand-blue to-brand-royal bg-clip-text text-transparent">
               InfluenceMatch
             </h1>
           </div>
@@ -28,10 +31,10 @@ const Navbar = ({ scrolled }: NavbarProps) => {
             </ul>
           </nav>
           <div className="hidden md:flex items-center space-x-4">
-            <Button variant="ghost" className="text-brand-blue hover:text-brand-purple">
+            <Button variant="ghost" className="text-brand-blue hover:text-brand-royal">
               Log In
             </Button>
-            <Button className="bg-gradient-to-r from-brand-blue to-brand-purple text-white hover:from-brand-purple hover:to-brand-blue transition-all">
+            <Button className="bg-gradient-to-r from-brand-blue to-brand-royal text-white hover:from-brand-royal hover:to-brand-sky transition-all" onClick={() => navigate('/business-dashboard')}>
               Sign Up
             </Button>
           </div>
@@ -63,7 +66,13 @@ const Navbar = ({ scrolled }: NavbarProps) => {
               <Button variant="ghost" className="w-full text-brand-blue justify-center">
                 Log In
               </Button>
-              <Button className="w-full bg-gradient-to-r from-brand-blue to-brand-purple text-white hover:from-brand-purple hover:to-brand-blue transition-all">
+              <Button 
+                className="w-full bg-gradient-to-r from-brand-blue to-brand-royal text-white hover:from-brand-royal hover:to-brand-sky transition-all"
+                onClick={() => {
+                  navigate('/business-dashboard');
+                  setIsMenuOpen(false);
+                }}
+              >
                 Sign Up
               </Button>
             </div>

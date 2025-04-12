@@ -64,11 +64,13 @@ export default {
 					ring: 'hsl(var(--sidebar-ring))'
 				},
 				brand: {
-					teal: "#0A8270",
-					charcoal: "#403E43",
-					coral: "#F06449",
-					navy: "#2C3E50",
-					mint: "#66B2B2"
+					blue: "#1A365D",
+					navy: "#2C5282",
+					royal: "#2B6CB0",
+					sky: "#4299E1",
+					light: "#BEE3F8",
+					gray: "#4A5568",
+					gold: "#F6AD55"
 				}
 			},
 			borderRadius: {
@@ -114,7 +116,7 @@ export default {
 				'scale': 'scale 0.3s ease-out'
 			},
 			backgroundImage: {
-				'hero-pattern': 'linear-gradient(135deg, rgba(10, 130, 112, 0.1) 0%, rgba(44, 62, 80, 0.1) 100%)',
+				'hero-pattern': 'linear-gradient(135deg, rgba(26, 54, 93, 0.1) 0%, rgba(44, 82, 130, 0.1) 100%)',
 			}
 		}
 	},

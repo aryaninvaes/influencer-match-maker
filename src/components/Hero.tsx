@@ -28,26 +28,26 @@ const Hero = () => {
             <div>
               <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight">
                 <span className="block">Connect Brands with</span> 
-                <span className="bg-gradient-to-r from-brand-teal to-brand-navy bg-clip-text text-transparent">Perfect Influencers</span>
+                <span className="bg-gradient-to-r from-brand-blue to-brand-royal bg-clip-text text-transparent">Perfect Influencers</span>
               </h1>
               <p className="mt-6 text-xl text-gray-600 max-w-lg">
-                Find the ideal match for your marketing campaigns across <span className="font-medium text-brand-teal">{words[currentWordIndex]}</span> based on audience, niche, and performance.
+                Find the ideal match for your marketing campaigns across <span className="font-medium text-brand-royal">{words[currentWordIndex]}</span> based on audience, niche, and performance.
               </p>
             </div>
             
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
               <Button 
-                className="hover-scale text-lg px-6 py-6 bg-gradient-to-r from-brand-teal to-brand-navy text-white hover:from-brand-navy hover:to-brand-teal transition-all"
+                className="hover-scale text-lg px-6 py-6 bg-gradient-to-r from-brand-blue to-brand-royal text-white hover:from-brand-royal hover:to-brand-sky transition-all"
                 onClick={() => navigate('/business-dashboard')}
               >
-                Find Creators
+                For Businesses
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
               <Button 
                 variant="outline" 
-                className="hover-scale text-lg px-6 py-6 border-2 border-brand-charcoal text-brand-charcoal hover:bg-brand-charcoal/10"
+                className="hover-scale text-lg px-6 py-6 border-2 border-brand-gray text-brand-gray hover:bg-brand-gray/10"
               >
-                For Business
+                For Content Creators
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
             </div>
@@ -55,11 +55,11 @@ const Hero = () => {
             <div className="flex flex-wrap gap-6 items-center pt-4">
               <div className="flex -space-x-2">
                 {[1, 2, 3, 4, 5].map((_, i) => (
-                  <div key={i} className="w-10 h-10 rounded-full border-2 border-white bg-gradient-to-br from-brand-mint to-brand-teal transition-all duration-300 hover:scale-110 hover:z-10"></div>
+                  <div key={i} className="w-10 h-10 rounded-full border-2 border-white bg-gradient-to-br from-brand-sky to-brand-blue transition-all duration-300 hover:scale-110 hover:z-10"></div>
                 ))}
               </div>
               <p className="text-sm text-gray-600">
-                <span className="font-semibold text-brand-charcoal">5,000+</span> successful campaigns this month
+                <span className="font-semibold text-brand-gray">5,000+</span> successful campaigns this month
               </p>
             </div>
           </div>
@@ -68,7 +68,7 @@ const Hero = () => {
             <div className="relative z-10 animate-float hover-lift cursor-pointer">
               <div className="bg-white rounded-2xl shadow-xl p-6 border border-gray-100 max-w-md mx-auto card-shine">
                 <div className="flex items-center space-x-4 mb-6">
-                  <div className="w-16 h-16 rounded-full bg-gradient-to-br from-brand-mint to-brand-teal"></div>
+                  <div className="w-16 h-16 rounded-full bg-gradient-to-br from-brand-light to-brand-royal"></div>
                   <div>
                     <h3 className="font-bold text-lg">Fashion Brand</h3>
                     <p className="text-sm text-gray-500">Seeking lifestyle influencers</p>
@@ -89,7 +89,7 @@ const Hero = () => {
                   </div>
                 </div>
                 <div className="mt-6 flex justify-end">
-                  <Button className="text-sm px-4 py-2 bg-brand-teal text-white hover:bg-brand-navy">
+                  <Button className="text-sm px-4 py-2 bg-brand-royal text-white hover:bg-brand-blue">
                     View 48 matches
                   </Button>
                 </div>
@@ -99,7 +99,7 @@ const Hero = () => {
             <div className="absolute bottom-0 right-8 transform translate-y-1/3">
               <div className="bg-white rounded-2xl shadow-xl p-4 border border-gray-100 w-64 animate-float hover-lift cursor-pointer card-shine" style={{animationDelay: '2s'}}>
                 <div className="flex items-center space-x-3 mb-3">
-                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-brand-coral to-brand-navy"></div>
+                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-brand-gold to-brand-blue"></div>
                   <div>
                     <h3 className="font-bold text-sm">Beauty Influencer</h3>
                     <p className="text-xs text-gray-500">500K followers</p>
@@ -111,7 +111,7 @@ const Hero = () => {
             <div className="absolute top-0 left-8 transform -translate-y-1/4">
               <div className="bg-white rounded-2xl shadow-xl p-4 border border-gray-100 w-48 animate-float hover-lift cursor-pointer card-shine" style={{animationDelay: '1s'}}>
                 <div className="flex items-center space-x-2">
-                  <div className="w-8 h-8 rounded-full bg-gradient-to-br from-brand-navy to-brand-teal"></div>
+                  <div className="w-8 h-8 rounded-full bg-gradient-to-br from-brand-blue to-brand-royal"></div>
                   <div>
                     <h3 className="font-bold text-xs">Tech Reviewer</h3>
                     <p className="text-xs text-gray-500">1.2M followers</p>
