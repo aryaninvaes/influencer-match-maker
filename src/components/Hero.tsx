@@ -2,11 +2,13 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Hero = () => {
   const [isVisible, setIsVisible] = useState(false);
   const words = ["Instagram", "TikTok", "YouTube", "Twitter", "LinkedIn"];
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
+  const navigate = useNavigate();
   
   useEffect(() => {
     setIsVisible(true);
@@ -34,12 +36,18 @@ const Hero = () => {
             </div>
             
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
-              <Button className="hover-scale text-lg px-6 py-6 bg-gradient-to-r from-brand-teal to-brand-navy text-white hover:from-brand-navy hover:to-brand-teal transition-all">
+              <Button 
+                className="hover-scale text-lg px-6 py-6 bg-gradient-to-r from-brand-teal to-brand-navy text-white hover:from-brand-navy hover:to-brand-teal transition-all"
+                onClick={() => navigate('/business-dashboard')}
+              >
                 Find Creators
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
-              <Button variant="outline" className="hover-scale text-lg px-6 py-6 border-2 border-brand-charcoal text-brand-charcoal hover:bg-brand-charcoal/10">
-                Showcase Your Influence
+              <Button 
+                variant="outline" 
+                className="hover-scale text-lg px-6 py-6 border-2 border-brand-charcoal text-brand-charcoal hover:bg-brand-charcoal/10"
+              >
+                For Business
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
             </div>

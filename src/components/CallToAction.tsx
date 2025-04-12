@@ -1,8 +1,11 @@
 
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const CallToAction = () => {
+  const navigate = useNavigate();
+  
   return (
     <section className="py-16 lg:py-24 bg-gradient-to-r from-brand-teal to-brand-navy text-white">
       <div className="container px-4 sm:px-6 lg:px-8 mx-auto text-center max-w-4xl">
@@ -17,7 +20,7 @@ const CallToAction = () => {
         
         <Button 
           className="bg-white text-brand-teal hover:bg-gray-100 text-lg px-8 py-6 animate-pulse hover:animate-none"
-          onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}
+          onClick={() => navigate('/business-dashboard')}
         >
           JOIN NOW
           <ArrowRight className="ml-2 h-5 w-5" />
