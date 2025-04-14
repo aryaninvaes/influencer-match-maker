@@ -1,8 +1,9 @@
+
 import { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { BarChart, Bell, ChevronRight, Instagram, Facebook, Twitter, Youtube, Twitch, TikTok, MessageSquare, Plus, Search, Settings, Users } from "lucide-react";
+import { BarChart, Bell, ChevronRight, Instagram, Facebook, Twitter, Youtube, Twitch, MessageSquare, Plus, Search, Settings, Users } from "lucide-react";
 import DashboardHeader from "@/components/DashboardHeader";
 import DashboardSidebar from "@/components/DashboardSidebar";
 import { ScrollArea } from "@/components/ui/scroll-area";
@@ -192,14 +193,14 @@ const BusinessDashboard = () => {
   // Filter states
   const [selectedPlatform, setSelectedPlatform] = useState("all");
   
-  // Platform Icons mapping
+  // Platform Icons mapping - Removed TikTok and use hash # icon for it
   const PlatformIcon = {
     instagram: Instagram,
     facebook: Facebook, 
     twitter: Twitter,
     youtube: Youtube,
     twitch: Twitch,
-    tiktok: TikTok
+    tiktok: Users // Using Users as fallback for TikTok
   };
 
   // Platform display names
