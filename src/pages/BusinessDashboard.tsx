@@ -1,6 +1,7 @@
+
 import { useState } from 'react';
 import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
+import { Card, CardHeader, CardContent, CardFooter } from "@/components/ui/card";
 import { BarChart, Bell, ChevronRight, Instagram, Facebook, Twitter, Youtube, Twitch, MessageSquare, Plus, Search, Settings, Users } from "lucide-react";
 import DashboardHeader from "@/components/DashboardHeader";
 import { ScrollArea } from "@/components/ui/scroll-area";
