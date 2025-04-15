@@ -1,17 +1,15 @@
 import { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardContent, CardFooter } from "@/components/ui/card";
-import { BarChart, ChevronRight, ChevronLeft, Instagram, Facebook, Twitter, Youtube, Twitch, MessageSquare, Plus, Search, Settings, Users } from "lucide-react";
-import DashboardHeader from "@/components/DashboardHeader";
-import { ScrollArea } from "@/components/ui/scroll-area";
+import { Search, Filter, MapPin, Languages, DollarSign, Users, Instagram, Youtube, Twitter, Facebook, Twitch } from "lucide-react";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+import DashboardHeader from "@/components/DashboardHeader";
+import CreatorsDialog from "@/components/CreatorsDialog";
 
-const BusinessDashboard = () => {
+const Creators = () => {
   const [showCreatorsDirectory, setShowCreatorsDirectory] = useState(false);
 
-  const [activeTab, setActiveTab] = useState("overview");
-
+  // Keep existing categories array and influencers array from BusinessDashboard
   const categories = [
     { name: "Fashion", count: "2,450+", color: "bg-brand-mint/20 text-brand-teal" },
     { name: "Beauty", count: "1,890+", color: "bg-brand-coral/20 text-brand-coral" },
@@ -259,80 +257,177 @@ const BusinessDashboard = () => {
       
       <main className="container mx-auto px-4 py-8">
         <div className="flex flex-col md:flex-row md:items-center justify-between mb-8 gap-4">
-          <h1 className="text-2xl md:text-3xl font-bold text-gray-800">Dashboard</h1>
+          <h1 className="text-2xl md:text-3xl font-bold text-gray-800">Creator Directory</h1>
           <div className="flex items-center gap-4">
-            <Button className="bg-brand-teal hover:bg-brand-navy">
-              <Plus className="mr-2 h-4 w-4" />
-              New Campaign
+            <Button className="bg-brand-teal hover:bg-brand-navy w-full sm:w-auto">
+              Find Creators
             </Button>
           </div>
         </div>
 
-        <div className="mb-10">
-          <div className="flex items-center justify-between mb-4">
-            <h2 className="text-xl font-semibold text-gray-800">Recently Viewed</h2>
-            <Button variant="link" className="text-brand-blue p-0">
-              View All <ChevronRight className="ml-1 h-4 w-4" />
-            </Button>
+        {/* Advanced Search and Filters */}
+        <div className="bg-white rounded-lg shadow-sm p-4 md:p-6 mb-8">
+          <div className="flex flex-col lg:flex-row gap-4">
+            <div className="relative flex-grow">
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={18} />
+              <input 
+                placeholder="Search creators by name, niche, or keywords" 
+                className="pl-10 w-full border border-gray-300 rounded-lg py-2 px-4 focus:outline-none focus:ring-2 focus:ring-brand-teal"
+              />
+            </div>
+            <div className="flex flex-wrap gap-3">
+              {/* Platform Filter */}
+              <Select defaultValue="all">
+                <SelectTrigger className="w-[160px]">
+                  <Users className="mr-2 h-4 w-4" />
+                  <SelectValue placeholder="Platform" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="all">All Platforms</SelectItem>
+                  <SelectItem value="instagram">Instagram</SelectItem>
+                  <SelectItem value="youtube">YouTube</SelectItem>
+                  <SelectItem value="tiktok">TikTok</SelectItem>
+                  <SelectItem value="twitter">Twitter</SelectItem>
+                  <SelectItem value="twitch">Twitch</SelectItem>
+                </SelectContent>
+              </Select>
+
+              {/* Category Filter */}
+              <Select defaultValue="all">
+                <SelectTrigger className="w-[160px]">
+                  <Filter className="mr-2 h-4 w-4" />
+                  <SelectValue placeholder="Category" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="all">All Categories</SelectItem>
+                  {categories.map(category => (
+                    <SelectItem key={category.name} value={category.name.toLowerCase()}>
+                      {category.name}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+
+              {/* Location Filter */}
+              <Select defaultValue="global">
+                <SelectTrigger className="w-[160px]">
+                  <MapPin className="mr-2 h-4 w-4" />
+                  <SelectValue placeholder="Location" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="global">Global</SelectItem>
+                  <SelectItem value="north_america">North America</SelectItem>
+                  <SelectItem value="europe">Europe</SelectItem>
+                  <SelectItem value="asia">Asia</SelectItem>
+                  <SelectItem value="australia">Australia</SelectItem>
+                </SelectContent>
+              </Select>
+
+              {/* Language Filter */}
+              <Select defaultValue="any">
+                <SelectTrigger className="w-[160px]">
+                  <Languages className="mr-2 h-4 w-4" />
+                  <SelectValue placeholder="Language" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="any">Any Language</SelectItem>
+                  <SelectItem value="english">English</SelectItem>
+                  <SelectItem value="spanish">Spanish</SelectItem>
+                  <SelectItem value="french">French</SelectItem>
+                  <SelectItem value="german">German</SelectItem>
+                  <SelectItem value="chinese">Chinese</SelectItem>
+                </SelectContent>
+              </Select>
+
+              {/* Budget Filter */}
+              <Select defaultValue="any">
+                <SelectTrigger className="w-[160px]">
+                  <DollarSign className="mr-2 h-4 w-4" />
+                  <SelectValue placeholder="Budget" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="any">Any Budget</SelectItem>
+                  <SelectItem value="micro">Under $1,000</SelectItem>
+                  <SelectItem value="mid">$1,000 - $5,000</SelectItem>
+                  <SelectItem value="macro">$5,000 - $15,000</SelectItem>
+                  <SelectItem value="mega">$15,000+</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
           </div>
-          
-          <Carousel className="w-full">
-            <CarouselContent className="-ml-2 md:-ml-4">
-              {influencers.slice(0, 5).map((influencer) => (
-                <CarouselItem key={influencer.id} className="pl-2 md:pl-4 basis-full sm:basis-1/2 md:basis-1/3 lg:basis-1/4">
-                  <InfluencerCard influencer={influencer} />
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-            <CarouselPrevious className="absolute left-0 top-1/2 -translate-y-1/2" />
-            <CarouselNext className="absolute right-0 top-1/2 -translate-y-1/2" />
-          </Carousel>
         </div>
 
-        <div className="mb-10">
-          <div className="flex items-center justify-between mb-4">
-            <h2 className="text-xl font-semibold text-gray-800">Creators For You</h2>
-            <Button variant="link" className="text-brand-blue p-0">
-              View All <ChevronRight className="ml-1 h-4 w-4" />
-            </Button>
+        <div className="flex-1 overflow-auto p-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+            {influencers.map((influencer) => (
+              <Card key={influencer.id} className="overflow-hidden hover:shadow-md transition-all">
+                <CardHeader className="p-4 flex flex-row items-center space-y-0 gap-3 border-b">
+                  <div className="w-12 h-12 rounded-full overflow-hidden bg-gray-100">
+                    <img src={influencer.avatar} alt={influencer.name} className="w-full h-full object-cover" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold">{influencer.name}</h3>
+                    <p className="text-sm text-muted-foreground">{influencer.category}</p>
+                  </div>
+                </CardHeader>
+                <CardContent className="p-4">
+                  <p className="text-sm text-gray-600 mb-3 line-clamp-2">{influencer.description}</p>
+                  
+                  <div className="flex flex-wrap gap-2 mb-3">
+                    {Object.entries(influencer.platforms || {}).map(([platform, isActive]) => {
+                      if (!isActive) return null;
+                      const Icon = Users; // Replace with actual platform icon component
+                      const followers = influencer.followers?.[platform];
+                      
+                      return (
+                        <div key={platform} className="flex items-center text-xs bg-gray-100 px-2 py-1 rounded">
+                          <Icon className="h-3 w-3 mr-1" />
+                          {followers ? followers : platform}
+                        </div>
+                      );
+                    })}
+                  </div>
+                  
+                  <div className="grid grid-cols-2 gap-2 mb-2 text-xs">
+                    <div className="flex items-center">
+                      <span className="font-medium text-yellow-500 mr-1">★</span>
+                      <span>{influencer.rating}</span>
+                    </div>
+                    <div className="flex items-center">
+                      <span className="font-medium text-green-500 mr-1">↗</span>
+                      <span>{influencer.engagementRate}</span>
+                    </div>
+                    <div className="flex items-center">
+                      <span className="font-medium text-blue-500 mr-1">$</span>
+                      <span>{influencer.priceRange}</span>
+                    </div>
+                    <div className="flex items-center">
+                      <span className="font-medium text-red-500 mr-1">📍</span>
+                      <span>{influencer.location}</span>
+                    </div>
+                  </div>
+                </CardContent>
+                <CardFooter className="p-4 pt-0 flex justify-between">
+                  <Button variant="outline" size="sm" className="text-brand-blue border-brand-blue hover:bg-brand-blue/5">
+                    Profile
+                  </Button>
+                  <Button size="sm" className="bg-brand-blue hover:bg-brand-navy">
+                    Contact
+                  </Button>
+                </CardFooter>
+              </Card>
+            ))}
           </div>
-          
-          <Carousel className="w-full">
-            <CarouselContent className="-ml-2 md:-ml-4">
-              {influencers.map((influencer) => (
-                <CarouselItem key={influencer.id} className="pl-2 md:pl-4 basis-full sm:basis-1/2 md:basis-1/3 lg:basis-1/4">
-                  <InfluencerCard influencer={influencer} />
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-            <CarouselPrevious className="absolute left-0 top-1/2 -translate-y-1/2" />
-            <CarouselNext className="absolute right-0 top-1/2 -translate-y-1/2" />
-          </Carousel>
-        </div>
-
-        <div className="relative">
-          <div className="flex items-center justify-between mb-4">
-            <h2 className="text-xl font-semibold text-gray-800">Based on Your Criteria</h2>
-            <Button variant="link" className="text-brand-blue p-0">
-              View All <ChevronRight className="ml-1 h-4 w-4" />
-            </Button>
-          </div>
-          
-          <Carousel className="w-full">
-            <CarouselContent className="-ml-2 md:-ml-4">
-              {influencers.map((influencer) => (
-                <CarouselItem key={influencer.id} className="pl-2 md:pl-4 basis-full sm:basis-1/2 md:basis-1/3 lg:basis-1/4">
-                  <InfluencerCard influencer={influencer} />
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-            <CarouselPrevious className="absolute left-0 top-1/2 -translate-y-1/2" />
-            <CarouselNext className="absolute right-0 top-1/2 -translate-y-1/2" />
-          </Carousel>
         </div>
       </main>
+
+      <CreatorsDialog
+        isOpen={showCreatorsDirectory}
+        onClose={() => setShowCreatorsDirectory(false)}
+        influencers={[]} // Pass your influencers data here
+      />
     </div>
   );
 };
 
-export default BusinessDashboard;
+export default Creators;
