@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import { Search, Filter, MapPin, Globe, Star, TrendingUp, DollarSign, Instagram, Facebook, Twitter, Youtube, Twitch, Users } from "lucide-react";
+import { Search, Filter, MapPin, Globe, Star, TrendingUp, DollarSign, Instagram, Facebook, Twitter, Youtube, Twitch, Users, Languages } from "lucide-react";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Link } from "react-router-dom";
@@ -323,7 +323,7 @@ const Creators = () => {
 
               <Select defaultValue="any">
                 <SelectTrigger className="w-[160px]">
-                  <Languages className="mr-2 h-4 w-4" />
+                  <Globe className="mr-2 h-4 w-4" />
                   <SelectValue placeholder="Language" />
                 </SelectTrigger>
                 <SelectContent>
