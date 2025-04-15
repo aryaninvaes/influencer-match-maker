@@ -1,8 +1,9 @@
+
 import { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
 import { Link } from "react-router-dom";
-import { ChevronRight, ChevronLeft, Plus } from "lucide-react";
+import { ChevronRight, ChevronLeft, Plus, Instagram, Facebook, Twitter, Youtube, Twitch, Users } from "lucide-react";
 import DashboardHeader from "@/components/DashboardHeader";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";

@@ -1,11 +1,18 @@
 import { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
-import { Search, Filter, MapPin, Languages, DollarSign, Users, Instagram, Youtube, Twitter, Facebook, Twitch } from "lucide-react";
+import { Input } from "@/components/ui/input";
+import { Search, Filter, MapPin, Globe, Star, TrendingUp, DollarSign, Instagram, Facebook, Twitter, Youtube, Twitch, Users } from "lucide-react";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Link } from "react-router-dom";
+import DashboardHeader from "@/components/DashboardHeader";
+import CreatorsDialog from "@/components/CreatorsDialog";
 
 const Creators = () => {
-  const [showCreatorsDirectory, setShowCreatorsDirectory] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState("all");
+  const [selectedPlatform, setSelectedPlatform] = useState("all");
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
 
   const categories = [
     { name: "Fashion", count: "2,450+", color: "bg-brand-mint/20 text-brand-teal" },
@@ -169,7 +176,7 @@ const Creators = () => {
     return count;
   };
 
-  const [selectedPlatform, setSelectedPlatform] = useState("all");
+  const [filteredCreators, setFilteredCreators] = useState(influencers);
 
   const PlatformIcon = {
     instagram: Instagram,
@@ -347,16 +354,16 @@ const Creators = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-          {influencers.map((influencer) => (
+          {filteredCreators.map((influencer) => (
             <InfluencerCard key={influencer.id} influencer={influencer} />
           ))}
         </div>
       </main>
 
-      <CreatorsDialog
-        isOpen={showCreatorsDirectory}
-        onClose={() => setShowCreatorsDirectory(false)}
-        influencers={[]} // Pass your influencers data here
+      <CreatorsDialog 
+        isOpen={isDialogOpen} 
+        onClose={() => setIsDialogOpen(false)} 
+        influencers={filteredCreators} 
       />
     </div>
   );

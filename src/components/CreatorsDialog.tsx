@@ -1,7 +1,8 @@
+
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Search, Users } from "lucide-react";
+import { Instagram, Facebook, Twitter, Youtube, Twitch, Users, Search } from "lucide-react";
 import { Button } from "./ui/button";
 
 interface CreatorsDialogProps {
@@ -11,6 +12,25 @@ interface CreatorsDialogProps {
 }
 
 const CreatorsDialog = ({ isOpen, onClose, influencers }: CreatorsDialogProps) => {
+  const PlatformIcon = {
+    instagram: Instagram,
+    facebook: Facebook, 
+    twitter: Twitter,
+    youtube: Youtube,
+    twitch: Twitch,
+    tiktok: Users
+  };
+
+  const formatFollowers = (count: number) => {
+    if (count >= 1000000) {
+      return (count / 1000000).toFixed(1) + "M";
+    }
+    if (count >= 1000) {
+      return (count / 1000).toFixed(0) + "K";
+    }
+    return count;
+  };
+
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent className="max-w-[90vw] h-[90vh] p-0">
@@ -84,13 +104,13 @@ const CreatorsDialog = ({ isOpen, onClose, influencers }: CreatorsDialogProps) =
                     <div className="flex flex-wrap gap-2 mb-3">
                       {Object.entries(influencer.platforms || {}).map(([platform, isActive]) => {
                         if (!isActive) return null;
-                        const Icon = Users; // Replace with actual platform icon component
+                        const Icon = PlatformIcon[platform] || Users;
                         const followers = influencer.followers?.[platform];
                         
                         return (
                           <div key={platform} className="flex items-center text-xs bg-gray-100 px-2 py-1 rounded">
                             <Icon className="h-3 w-3 mr-1" />
-                            {followers ? followers : platform}
+                            {followers ? formatFollowers(followers) : platform}
                           </div>
                         );
                       })}
