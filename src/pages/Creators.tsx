@@ -1,15 +1,12 @@
 import { useState } from 'react';
 import { Button } from "@/components/ui/button";
-import { Card, CardHeader, CardContent, CardFooter } from "@/components/ui/card";
+import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
 import { Search, Filter, MapPin, Languages, DollarSign, Users, Instagram, Youtube, Twitter, Facebook, Twitch } from "lucide-react";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import DashboardHeader from "@/components/DashboardHeader";
-import CreatorsDialog from "@/components/CreatorsDialog";
 
 const Creators = () => {
   const [showCreatorsDirectory, setShowCreatorsDirectory] = useState(false);
 
-  // Keep existing categories array and influencers array from BusinessDashboard
   const categories = [
     { name: "Fashion", count: "2,450+", color: "bg-brand-mint/20 text-brand-teal" },
     { name: "Beauty", count: "1,890+", color: "bg-brand-coral/20 text-brand-coral" },
@@ -253,8 +250,6 @@ const Creators = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <DashboardHeader />
-      
       <main className="container mx-auto px-4 py-8">
         <div className="flex flex-col md:flex-row md:items-center justify-between mb-8 gap-4">
           <h1 className="text-2xl md:text-3xl font-bold text-gray-800">Creator Directory</h1>
@@ -265,7 +260,6 @@ const Creators = () => {
           </div>
         </div>
 
-        {/* Advanced Search and Filters */}
         <div className="bg-white rounded-lg shadow-sm p-4 md:p-6 mb-8">
           <div className="flex flex-col lg:flex-row gap-4">
             <div className="relative flex-grow">
@@ -276,7 +270,6 @@ const Creators = () => {
               />
             </div>
             <div className="flex flex-wrap gap-3">
-              {/* Platform Filter */}
               <Select defaultValue="all">
                 <SelectTrigger className="w-[160px]">
                   <Users className="mr-2 h-4 w-4" />
@@ -292,7 +285,6 @@ const Creators = () => {
                 </SelectContent>
               </Select>
 
-              {/* Category Filter */}
               <Select defaultValue="all">
                 <SelectTrigger className="w-[160px]">
                   <Filter className="mr-2 h-4 w-4" />
@@ -308,7 +300,6 @@ const Creators = () => {
                 </SelectContent>
               </Select>
 
-              {/* Location Filter */}
               <Select defaultValue="global">
                 <SelectTrigger className="w-[160px]">
                   <MapPin className="mr-2 h-4 w-4" />
@@ -323,7 +314,6 @@ const Creators = () => {
                 </SelectContent>
               </Select>
 
-              {/* Language Filter */}
               <Select defaultValue="any">
                 <SelectTrigger className="w-[160px]">
                   <Languages className="mr-2 h-4 w-4" />
@@ -339,7 +329,6 @@ const Creators = () => {
                 </SelectContent>
               </Select>
 
-              {/* Budget Filter */}
               <Select defaultValue="any">
                 <SelectTrigger className="w-[160px]">
                   <DollarSign className="mr-2 h-4 w-4" />
@@ -357,67 +346,10 @@ const Creators = () => {
           </div>
         </div>
 
-        <div className="flex-1 overflow-auto p-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-            {influencers.map((influencer) => (
-              <Card key={influencer.id} className="overflow-hidden hover:shadow-md transition-all">
-                <CardHeader className="p-4 flex flex-row items-center space-y-0 gap-3 border-b">
-                  <div className="w-12 h-12 rounded-full overflow-hidden bg-gray-100">
-                    <img src={influencer.avatar} alt={influencer.name} className="w-full h-full object-cover" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold">{influencer.name}</h3>
-                    <p className="text-sm text-muted-foreground">{influencer.category}</p>
-                  </div>
-                </CardHeader>
-                <CardContent className="p-4">
-                  <p className="text-sm text-gray-600 mb-3 line-clamp-2">{influencer.description}</p>
-                  
-                  <div className="flex flex-wrap gap-2 mb-3">
-                    {Object.entries(influencer.platforms || {}).map(([platform, isActive]) => {
-                      if (!isActive) return null;
-                      const Icon = Users; // Replace with actual platform icon component
-                      const followers = influencer.followers?.[platform];
-                      
-                      return (
-                        <div key={platform} className="flex items-center text-xs bg-gray-100 px-2 py-1 rounded">
-                          <Icon className="h-3 w-3 mr-1" />
-                          {followers ? followers : platform}
-                        </div>
-                      );
-                    })}
-                  </div>
-                  
-                  <div className="grid grid-cols-2 gap-2 mb-2 text-xs">
-                    <div className="flex items-center">
-                      <span className="font-medium text-yellow-500 mr-1">★</span>
-                      <span>{influencer.rating}</span>
-                    </div>
-                    <div className="flex items-center">
-                      <span className="font-medium text-green-500 mr-1">↗</span>
-                      <span>{influencer.engagementRate}</span>
-                    </div>
-                    <div className="flex items-center">
-                      <span className="font-medium text-blue-500 mr-1">$</span>
-                      <span>{influencer.priceRange}</span>
-                    </div>
-                    <div className="flex items-center">
-                      <span className="font-medium text-red-500 mr-1">📍</span>
-                      <span>{influencer.location}</span>
-                    </div>
-                  </div>
-                </CardContent>
-                <CardFooter className="p-4 pt-0 flex justify-between">
-                  <Button variant="outline" size="sm" className="text-brand-blue border-brand-blue hover:bg-brand-blue/5">
-                    Profile
-                  </Button>
-                  <Button size="sm" className="bg-brand-blue hover:bg-brand-navy">
-                    Contact
-                  </Button>
-                </CardFooter>
-              </Card>
-            ))}
-          </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+          {influencers.map((influencer) => (
+            <InfluencerCard key={influencer.id} influencer={influencer} />
+          ))}
         </div>
       </main>
 

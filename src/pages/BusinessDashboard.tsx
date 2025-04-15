@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { Button } from "@/components/ui/button";
-import { Card, CardHeader, CardContent, CardFooter } from "@/components/ui/card";
-import { BarChart, ChevronRight, ChevronLeft, Instagram, Facebook, Twitter, Youtube, Twitch, MessageSquare, Plus, Search, Settings, Users } from "lucide-react";
+import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
+import { Link } from "react-router-dom";
+import { ChevronRight, ChevronLeft, Plus } from "lucide-react";
 import DashboardHeader from "@/components/DashboardHeader";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
@@ -313,8 +314,10 @@ const BusinessDashboard = () => {
         <div className="relative">
           <div className="flex items-center justify-between mb-4">
             <h2 className="text-xl font-semibold text-gray-800">Based on Your Criteria</h2>
-            <Button variant="link" className="text-brand-blue p-0">
-              View All <ChevronRight className="ml-1 h-4 w-4" />
+            <Button variant="link" asChild className="text-brand-blue p-0">
+              <Link to="/creators">
+                View All <ChevronRight className="ml-1 h-4 w-4" />
+              </Link>
             </Button>
           </div>
           
